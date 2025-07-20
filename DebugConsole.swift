@@ -6,7 +6,7 @@
     //
 
 import UIKit
-
+#if DEBUG
 extension UIWindow {
     open override func motionEnded(_ motion: UIEvent.EventSubtype, with event: UIEvent?) {
         if motion == .motionShake {
@@ -226,8 +226,10 @@ extension DateFormatter {
 
     // MARK: - Public Interface
 func debugLog(_ message: String) {
+    #if DEBUG
     print("🔥 DebugConsole: - debugLog called with: \(message)")
     DebugConsole.shared.log(message)
+    #endif
 }
 
 func redirectStandardOutputToDebugConsole() {
@@ -250,3 +252,4 @@ func redirectStandardOutputToDebugConsole() {
         }
     }
 }
+#endif
